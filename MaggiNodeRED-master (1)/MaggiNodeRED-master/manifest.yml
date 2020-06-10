@@ -1,0 +1,15 @@
+---
+applications:
+- instances: 1
+  timeout: 180
+  name: magginodered
+  buildpack: sdk-for-nodejs
+  command: npm start
+  disk_quota: 1G
+  memory: 256MB
+  domain: mybluemix.net
+  host: maggi-node-red
+  services:
+    - maggi-node-red--cloudant-1591713671236-53352
+  env:
+    OPTIMIZE_MEMORY: true
