@@ -1,0 +1,279 @@
+[
+    {
+        "id": "37e037bf.f943e8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3a0358d9.e0a008",
+        "type": "ui_tab",
+        "z": "",
+        "name": "WELCOME  TO  APPLE  WATCH  CUSTOMER  CARE ",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "a2462dc9.d2afc",
+        "type": "ui_group",
+        "z": "",
+        "name": "Meghana's AppleBot",
+        "tab": "3a0358d9.e0a008",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "8f89b144.9f4a1",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-custom",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "Palatino Linotype,Palatino,Book Antiqua,serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#4B7930",
+                    "value": "#4B7930",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#1c5748",
+                    "edited": true
+                },
+                "page-backgroundColor": {
+                    "value": "#963235",
+                    "edited": true
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#f18989",
+                    "edited": true
+                },
+                "group-textColor": {
+                    "value": "#9d2db0",
+                    "edited": true
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#a74ba6",
+                    "edited": true
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 80,
+                "sy": 60,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "9e4b80d4.5f7ef",
+        "type": "ui_form",
+        "z": "37e037bf.f943e8",
+        "name": "",
+        "label": "",
+        "group": "a2462dc9.d2afc",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "options": [
+            {
+                "label": "What's your query ?",
+                "value": "query",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "query": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "clear query",
+        "topic": "",
+        "x": 167,
+        "y": 243,
+        "wires": [
+            [
+                "bcb0c57e.2ea4a8",
+                "acb38b45.58c9e8"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "bcb0c57e.2ea4a8",
+        "type": "function",
+        "z": "37e037bf.f943e8",
+        "name": "",
+        "func": "msg.payload = msg.payload.query;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 323,
+        "y": 183,
+        "wires": [
+            [
+                "9c272b59.98f7f8"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "9c272b59.98f7f8",
+        "type": "watson-conversation-v1",
+        "z": "37e037bf.f943e8",
+        "name": "AppleBot",
+        "workspaceid": "9b1b7fd8-c717-41ce-986d-23a1bd0250d2",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "https://api.us-south.assistant.watson.cloud.ibm.com/instances/28aac2df-1ef6-487f-9107-8574c6583737",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 491,
+        "y": 154,
+        "wires": [
+            [
+                "228b2c05.171964"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "228b2c05.171964",
+        "type": "function",
+        "z": "37e037bf.f943e8",
+        "name": "",
+        "func": "msg.payload = msg.payload.output.text[0]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 671,
+        "y": 189,
+        "wires": [
+            [
+                "9b4fa6e3.6853f8"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "9b4fa6e3.6853f8",
+        "type": "ui_text",
+        "z": "37e037bf.f943e8",
+        "group": "a2462dc9.d2afc",
+        "order": 2,
+        "width": "6",
+        "height": "8",
+        "name": "",
+        "label": "Applebot says:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 824,
+        "y": 235,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "acb38b45.58c9e8",
+        "type": "ui_button",
+        "z": "37e037bf.f943e8",
+        "name": "",
+        "group": "a2462dc9.d2afc",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "clear output",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 319,
+        "y": 314,
+        "wires": [
+            [
+                "d981d452.616728"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "d981d452.616728",
+        "type": "function",
+        "z": "37e037bf.f943e8",
+        "name": "",
+        "func": "msg.payload=\"Hey there! I will be glad to solve your doubts regarding your brand new Apple Watch ! Try asking.. 'how to monitor workouts' or 'text size' (If it doesn't work try pressing SUBMIT button again or rephrase your query)\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 478,
+        "y": 316,
+        "wires": [
+            [
+                "9b4fa6e3.6853f8"
+            ]
+        ],
+        "l": false
+    }
+]
